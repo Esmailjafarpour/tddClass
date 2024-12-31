@@ -11,7 +11,13 @@ class news {
     }
 
     public deleteUser(user:any){
-        this.users = this.users.filter(i => i !== user)
+        this.users = this.users.filter(i => {
+            if(i === user.id){
+                return i !== user
+            }else{
+                console.log("کاربر یافت نشد")
+            }
+        })
     }
 
     publishNews(news:any){
@@ -24,21 +30,25 @@ class news {
 
 }
 
-const userManagement = new news()
+const usersManagement = new news()
 
-userManagement.createUser("nader")
-userManagement.createUser("abbas")
-userManagement.createUser("ali")
-userManagement.createUser("morteza")
-userManagement.createUser("farzad")
+usersManagement.createUser("nader")
+usersManagement.createUser("abbas")
+usersManagement.createUser("ali")
+usersManagement.createUser("morteza")
+usersManagement.createUser("farzad")
 
-userManagement.getUsers()
+usersManagement.getUsers()
 
-userManagement.publishNews("salam nader")
+usersManagement.publishNews("salam nader")
 
-userManagement.deleteUser("farzad")
+usersManagement.deleteUser("farzad")
 
-userManagement.getUsers()
+usersManagement.getUsers()
+
+usersManagement.deleteUser("farzad")
+
+usersManagement.getUsers()
 
 
 
