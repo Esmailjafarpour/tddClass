@@ -1,33 +1,40 @@
 class news {
 
-    public users : string[]
+    public users: string[]
 
     public constructor() {
         this.users = []
     }
 
-    public createUser(user:any){
-        this.users.push(user)
+    public createUser(user: string) {
+        let result = this.users.indexOf(user)
+        if (result == -1) {
+            this.users.push(user)
+        } else {
+            console.log('The user exists')
+        }
+
     }
 
-    public deleteUser(user:any){
-        this.users = this.users.filter(i => {
-            if(i === user.id){
-                return i !== user
-            }else{
-                console.log("کاربر یافت نشد")
-            }
-        })
+    public deleteUser(user: string) {
+        let result = this.users.indexOf(user)
+        if (result >= 1) {
+            this.users = this.users.filter(i => {
+                    return i !== user
+                }
+            )
+        }else {
+            console.log('There is no user with this profile')
+        }
     }
 
-    publishNews(news:any){
+    publishNews(news: any) {
         console.log(`new news ${news}`)
     }
 
-    public getUsers(){
-        console.log(this.users)
+    public getUsers() {
+        console.log('getUsers', this.users)
     }
-
 }
 
 const usersManagement = new news()
@@ -37,7 +44,9 @@ usersManagement.createUser("abbas")
 usersManagement.createUser("ali")
 usersManagement.createUser("morteza")
 usersManagement.createUser("farzad")
+usersManagement.getUsers()
 
+usersManagement.createUser("farzad")
 usersManagement.getUsers()
 
 usersManagement.publishNews("salam nader")
@@ -49,42 +58,6 @@ usersManagement.getUsers()
 usersManagement.deleteUser("farzad")
 
 usersManagement.getUsers()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // class observer {
