@@ -17,11 +17,6 @@ class khodroo implements lineCreate{
     }
 }
 
-// class ship implements lineCreate{
-//     createMethod (){
-//
-//     }
-// }
 
 abstract class naderFactory {
     order:lineCreate
