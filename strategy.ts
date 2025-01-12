@@ -17,7 +17,7 @@ interface PaymentStrategy {
       if (this.strategyPayName) {
         this.strategyPayName.pay(amount);
       } else {
-        console.log('هیچ استراتژی پرداختی انتخاب نشده است.');
+        console.log('هیچ روش پرداختی وجود ندارد');
       }
     }
   }

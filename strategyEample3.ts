@@ -1,8 +1,4 @@
-interface SortStrategy {
-     sort(data: number[]): number[];
- }
- 
- class BubbleSort implements SortStrategy {
+class BubbleSort {
      sort(data: number[]): number[] {
          for (let i = 0; i < data.length; i++) {
              for (let j = 0; j < data.length - 1 - i; j++) {
@@ -17,7 +13,7 @@ interface SortStrategy {
      }
  }
  
- class QuickSort implements SortStrategy {
+ class QuickSort {
      sort(data: number[]): number[] {
          if (data.length <= 1) return data;
          const pivot = data[0];
@@ -28,18 +24,18 @@ interface SortStrategy {
  }
  
  class DataProcessor {
-     private strategy: SortStrategy;
+     private sortStrategy: BubbleSort | QuickSort;
  
-     constructor(strategy: SortStrategy) {
-         this.strategy = strategy;
+     constructor(strategy: BubbleSort | QuickSort) {
+         this.sortStrategy = strategy;
      }
  
-     setStrategy(strategy: SortStrategy) {
-         this.strategy = strategy;
+     setSortStrategy(strategy: BubbleSort | QuickSort) {
+         this.sortStrategy = strategy;
      }
  
      processData(data: number[]): number[] {
-         return this.strategy.sort(data);
+         return this.sortStrategy.sort(data);
      }
  }
  
@@ -47,6 +43,6 @@ interface SortStrategy {
  const processor = new DataProcessor(new BubbleSort());
  console.log(processor.processData(data));
  
- processor.setStrategy(new QuickSort());
+ processor.setSortStrategy(new QuickSort());
  console.log(processor.processData(data));
  

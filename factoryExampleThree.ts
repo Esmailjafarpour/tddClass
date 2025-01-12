@@ -1,47 +1,36 @@
-
 interface Ticket {
-     bookTicket(): void;
-   }
-   
- 
-   class FlightTicket implements Ticket {
-     bookTicket(): void {
-       console.log("بلیط هواپیما رزرو شد.");
-     }
-   }
-   
- 
-   class TrainTicket implements Ticket {
-     bookTicket(): void {
-       console.log("بلیط قطار رزرو شد.");
-     }
-   }
-   
- 
-   class BusTicket implements Ticket {
-     bookTicket(): void {
-       console.log("بلیط اتوبوس رزرو شد.");
-     }
-   }
-   
- 
-   class TicketFactory {
-     static createTicket(type: string): Ticket {
-       if (type === "flight") {
-         return new FlightTicket();
-       } else if (type === "train") {
-         return new TrainTicket();
-       } else if (type === "bus") {
-         return new BusTicket();
-       } else {
-         throw new Error("نوع بلیط نامعتبر است.");
-       }
-     }
-   }
-   
- 
-   const flightTicket = TicketFactory.createTicket("flight");
-   flightTicket.bookTicket(); 
-   
-   const trainTicket = TicketF
-   
+    reserve(): string;
+}
+
+class AirplaneTicket implements Ticket {
+    reserve() {
+        return "بلیط هواپیما رزرو شد.";
+    }
+}
+
+class TrainTicket implements Ticket {
+    reserve() {
+        return "بلیط قطار رزرو شد.";
+    }
+}
+
+class TicketFactory {
+    static createTicket(vehicleType: string): Ticket | null {
+        if (vehicleType === "airplane") {
+            return new AirplaneTicket();
+        } else if (vehicleType === "train") {
+            return new TrainTicket();
+        } else {
+            return null;
+        }
+    }
+}
+
+const vehicleType = "airplane"; 
+const ticket = TicketFactory.createTicket(vehicleType);
+
+if (ticket) {
+    console.log(ticket.reserve());
+} else {
+    console.log("نوع وسیله نقلیه نامعتبر است.");
+}

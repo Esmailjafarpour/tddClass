@@ -1,6 +1,6 @@
 class Order {
      private observers: Observer[] = [];
-     private status: string = "پردازش";
+     private status: string = "منتظر تایید";
  
      addObserver(observer: Observer): void {
          this.observers.push(observer);
@@ -19,9 +19,7 @@ class Order {
      }
  
      private notifyObservers(): void {
-         for (const observer of this.observers) {
-             observer.update(this.status);
-         }
+         this.observers.forEach(observer => observer.update(this.status));
      }
  }
  
@@ -46,4 +44,6 @@ class Order {
  
  order.setStatus("در حال ارسال");
  order.setStatus("تحویل داده شده");
+
+ order.removeObserver(user1)
  

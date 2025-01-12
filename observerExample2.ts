@@ -1,74 +1,30 @@
-
 interface Observer {
-     update(news: string): void;
-   }
-   
-   
-   class NewsAgency {
-     private observers: Observer[] = [];
-     private categoryNews: { [key: string]: string[] } = {};
-   
-    
-     public addObserver(observer: Observer, category: string): void {
-       if (!this.categoryNews[category]) {
-         this.categoryNews[category] = [];
-       }
-       this.observers.push(observer);
-     }
-   
-   
-     public removeObserver(observer: Observer): void {
-       const index = this.observers.indexOf(observer);
-       if (index !== -1) {
-         this.observers.splice(index, 1);
-       }
-     }
-   
-   
-     public publishNews(category: string, news: string): void {
-       this.categoryNews[category]?.push(news);
-       this.notifyObservers(category, news);
-     }
-   
-    
-     private notifyObservers(category: string, news: string): void {
-       for (let observer of this.observers) {
-         observer.update(news);
-       }
-     }
-   }
-   
- 
-   class User implements Observer {
-     private name: string;
-     private category: string;
-   
-     constructor(name: string, category: string) {
-       this.name = name;
-       this.category = category;
-     }
-   
-    
-     public update(news: string): void {
-       console.log(`${this.name} دریافت کرد: ${news}`);
-     }
-   }
-   
-  
-   const newsAgency = new NewsAgency();
-   
-  
-   const user1 = new User('علی', 'ورزشی');
-   const user2 = new User('مریم', 'سیاسی');
-   const user3 = new User('حسین', 'اقتصادی');
-   
-  
-   newsAgency.addObserver(user1, 'ورزشی');
-   newsAgency.addObserver(user2, 'سیاسی');
-   newsAgency.addObserver(user3, 'اقتصادی');
-   
+  update(news: string): void;
+}
 
-   newsAgency.publishNews('ورزشی', 'مسابقات جام جهانی شروع شد!');
-   newsAgency.publishNews('سیاسی', 'انتخابات ریاست جمهوری برگزار شد.');
-   newsAgency.publishNews('اقتصادی', 'نرخ دلار افزایش یافت.');
-   
+class News {
+  private observers: Observer[] = [];
+
+  addObserver(observer: Observer): void {
+      this.observers.push(observer);
+  }
+
+  publishNews(news: string): void {
+      this.observers.forEach(observer => observer.update(news));
+  }
+}
+
+class User implements Observer {
+  constructor(private name: string) {}
+
+  update(news: string): void {
+      console.log(`${this.name} دریافت کرد: ${news}`);
+  }
+}
+
+const newsService = new News();
+const user1 = new User('علی');
+
+newsService.addObserver(user1);
+
+newsService.publishNews('مسابقات جام جهانی شروع شد!');
