@@ -6,21 +6,21 @@ interface PaymentStrategy {
   
    class CreditCardPayment implements PaymentStrategy {
      public pay(amount: number): void {
-       console.log(`پرداخت ${amount} تومان با کارت اعتباری.`);
+       console.log(`پرداخت${amount} باکارت اعتبار انجام شد`);
      }
    }
    
   
    class PayPalPayment implements PaymentStrategy {
      public pay(amount: number): void {
-       console.log(`پرداخت ${amount} تومان با پی‌پال.`);
+       console.log(`پرداخت با ${amount}پی پل انجام شد`);
      }
    }
    
   
    class CashPayment implements PaymentStrategy {
      public pay(amount: number): void {
-       console.log(`پرداخت ${amount} تومان به صورت نقدی.`);
+       console.log(`پرداخت${amount} به صورت نقدی انجام شد`);
      }
    }
    

@@ -3,18 +3,18 @@ interface Observer {
 }
 
 class News {
-  private observers: Observer[] = [];
+  private flowers: Observer[] = [];
 
-  addObserver(observer: Observer): void {
-      this.observers.push(observer);
+  addObserver(flower: Observer): void {
+      this.flowers.push(flower);
   }
 
   publishNews(news: string): void {
-      this.observers.forEach(observer => observer.update(news));
+      this.flowers.forEach(flower => flower.update(news));
   }
 }
 
-class User implements Observer {
+class followers implements Observer {
   constructor(private name: string) {}
 
   update(news: string): void {
@@ -23,8 +23,8 @@ class User implements Observer {
 }
 
 const newsService = new News();
-const user1 = new User('علی');
+const flower = new User('علی');
 
-newsService.addObserver(user1);
+newsService.addObserver(flower);
 
 newsService.publishNews('مسابقات جام جهانی شروع شد!');

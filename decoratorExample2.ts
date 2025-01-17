@@ -1,6 +1,5 @@
-// کلاس اصلی خودرو
 class Car {
-     description = "خودروی پایه";
+     description = "خودرو";
    
      getDescription() {
        return this.description;
@@ -65,17 +64,17 @@ class Car {
    
    let myCar = new Car(); 
    console.log(myCar.getDescription());  
-   console.log("هزینه: " + myCar.cost() + " تومان");
+   console.log("هزینه" + myCar.cost());
    
-   myCar = new CustomColor(myCar, "قرمز");  
-   console.log(myCar.getDescription());  
-   console.log("هزینه: " + myCar.cost() + " تومان");
+   let myCar1 = new CustomColor(myCar, "قرمز");  
+   console.log(myCar1.getDescription());  
+   console.log("هزینه" + myCar1.cost());
    
-   myCar = new CustomRims(myCar, "18 اینچ اسپرت"); 
-   console.log(myCar.getDescription());  
-   console.log("هزینه: " + myCar.cost() + " تومان");
+   let myCar2 = new CustomRims(myCar, "18 اینچ اسپرت"); 
+   console.log(myCar2.getDescription());  
+   console.log("هزینه" + myCar2.cost());
    
-   myCar = new AdvancedSoundSystem(myCar); 
-   console.log(myCar.getDescription()); 
-   console.log("هزینه: " + myCar.cost() + " تومان");
+   let myCar3 = new AdvancedSoundSystem(myCar); 
+   console.log(myCar3.getDescription()); 
+   console.log("هزینه" + myCar3.cost());
    

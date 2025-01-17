@@ -1,7 +1,10 @@
 
 class lineCreate {
     public createMethod ():void{
-
+    
+    }
+    constructor(){
+        order:''
     }
 }
 

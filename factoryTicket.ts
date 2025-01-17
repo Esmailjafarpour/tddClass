@@ -26,8 +26,9 @@ class TicketFactory {
     }
 }
 
-const vehicleType = "airplane"; 
-const ticket = TicketFactory.createTicket(vehicleType);
+
+let ticket = TicketFactory.createTicket("airplane");
+
 
 if (ticket) {
     console.log(ticket.reserve());

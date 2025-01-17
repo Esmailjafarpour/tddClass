@@ -30,7 +30,7 @@ interface PaymentStrategy {
   }
   
   
-  class CashPayment implements PaymentStrategy {
+  class CashPaymentMethod implements PaymentStrategy {
     public pay(amount: number): void {
       console.log(amount + ' cash amountPay');
     }
@@ -43,7 +43,7 @@ interface PaymentStrategy {
   strategyPay.strategyPay(paypalPay);
   strategyPay.pay(200); 
   
-  let cashPay = new CashPayment();
+  let cashPay = new CashPaymentMethod();
   strategyPay.strategyPay(cashPay);
   strategyPay.pay(700); 
   

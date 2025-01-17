@@ -13,27 +13,29 @@ class Printer {
      }
    
      
-     public print(document: string): void {
+     public print(order: string): void {
        if (this.isPrinting) {
-         console.log('چاپگر مشغول است. لطفاً منتظر بمانید...');
+         console.log('چاپگر در حال چاپ سفارش است');
          return;
        }
-   
+
        this.isPrinting = true; 
-       console.log(`در حال چاپ: ${document}`);
+       console.log(`در حال چاپ${order}هستم`);
    
+       setTimeout(() => {
+        this.isPrinting = false;
+        console.log(`چاپ ${order} تمام شد.`);
+       }, 3000);
       
-       this.isPrinting = false;
-       console.log(`چاپ ${document} تمام شد.`);
      }
    }
    
    
    const printer = Printer.getInstance();
    
-   printer.print('سند 1');  
-   printer.print('سند 2');  
-   printer.print('سند 3');  
+   printer.print('سفارش اول');  
+   printer.print('سفارش دوم');  
+   printer.print('سفارش سوم');  
    
    
 

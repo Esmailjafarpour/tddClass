@@ -9,7 +9,7 @@ class Order {
  }
  
  class OrderDecorator {
-     constructor(private order: Order) {}
+     constructor(public order: Order) {}
  
      getDescription(): string {
          return this.order.getDescription();
@@ -53,12 +53,12 @@ class Order {
  const order = new Order();
  console.log(order.getDescription(), "هزینه:", order.getCost());
  
- const orderWithWarranty = new Warranty(order);
- console.log(orderWithWarranty.getDescription(), "هزینه:", orderWithWarranty.getCost());
+ const orderWarranty = new Warranty(order);
+ console.log(orderWarranty.getDescription(), "هزینه:", orderWarranty.getCost());
  
- const orderWithGift = new GiftPackaging(orderWithWarranty);
- console.log(orderWithGift.getDescription(), "هزینه:", orderWithGift.getCost());
+ const orderGift = new GiftPackaging(orderWarranty);
+ console.log(orderGift.getDescription(), "هزینه:", orderGift.getCost());
  
- const finalOrder = new ExpressDelivery(orderWithGift);
+ const finalOrder = new ExpressDelivery(orderGift);
  console.log(finalOrder.getDescription(), "هزینه:", finalOrder.getCost());
  

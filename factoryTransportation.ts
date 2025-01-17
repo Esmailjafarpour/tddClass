@@ -1,19 +1,23 @@
-class Car {
+interface Drive {
+  drive(): void;
+}
+
+class car implements Drive {
   public drive(): void {
     console.log("رانندگی با ماشین");
   }
 }
 
-class Bicycle {
+class Bicycle implements Drive{
   public drive(): void {
     console.log("رانندگی با دوچرخه");
   }
 }
 
 class TransportFactory {
-  public static createTransport(type: string): Car | Bicycle | null {
+  public static createTransport(type: string): car | Bicycle | null {
     if (type === "car") {
-      return new Car();
+      return new car();
     } else if (type === "bicycle") {
       return new Bicycle();
     } else {

@@ -35,5 +35,5 @@ class EmailManager {
 }
 
 const emailManager = new EmailManager();
-const emails = ["user1@example.com", "user2@example.com", "user1@example.com"];
-emailManager.sendEmails(emails, "پیام ");
+const emails = ["abbas.revvaldev@gmail.com", "nader.revvaldev@gmail.com"];
+emailManager.sendEmails(emails, "سلام برنامه نویس عزیز");
